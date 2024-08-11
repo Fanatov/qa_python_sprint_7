@@ -76,3 +76,4 @@ class OrderPageScooter:
         self.comment_section_input(comment)
         self.click_make_order_button()
         self.click_confirm_button()
+

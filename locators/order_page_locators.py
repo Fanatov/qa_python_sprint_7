@@ -21,4 +21,3 @@ class OrderPageLocators:
     track_order_button = [By.XPATH, "//button[contains(text(),'Посмотреть статус')]"]
     order_ready_pop_up = [By.XPATH, "//div[contains(text(),'Заказ оформлен')]"]
     title_about_rent = [By.XPATH, "//div[text()='Про аренду']"]
-

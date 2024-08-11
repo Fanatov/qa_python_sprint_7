@@ -36,12 +36,13 @@ class TestOrderPage:
         WebDriverWait(self.driver, 3).until(
             expected_conditions.url_to_be("https://qa-scooter.praktikum-services.ru/"))
         base_page.click_yandex_logo()
-        expected_url = "https://dzen.ru/?redirect=true"
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.url_to_be(f'https://dzen.ru/?yredirect=true'))
+        expected_url = "https://dzen.ru/?yredirect=true"
         redirect_url = self.driver.current_url
-        assert expected_url != redirect_url
-        # тестовая площадка пытается сделать кривой редирект "?yredirect=true" вместо "?redirect=true"
-        # поэтому после ассерта идет переключение вкладки для следующих тестовых данных
         self.driver.switch_to.window(self.driver.window_handles[0])
+        assert redirect_url in expected_url
 
     @classmethod
     def teardown_class(cls):
