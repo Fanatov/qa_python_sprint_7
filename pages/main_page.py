@@ -1,11 +1,9 @@
 from locators.main_page_locators import MainPageLocators
+from pages.base_page import BasePage
 
 
 # Класс главной авторизации
-class MainPageScooter:
-
-    def __init__(self, driver):
-        self.driver = driver
+class MainPageScooter(BasePage):
 
     def click_order_small_button(self):
         self.driver.find_element(*MainPageLocators.small_order_button).click()
@@ -36,4 +34,3 @@ class MainPageScooter:
 
     def click_question_scooter_delivery_abroad(self):
         self.driver.find_element(*MainPageLocators.question_scooter_delivery_abroad).click()
-

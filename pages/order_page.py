@@ -1,13 +1,10 @@
 from selenium.webdriver.common.by import By
 from locators.order_page_locators import OrderPageLocators
+from pages.base_page import BasePage
 
 
 # Класс страницы авторизации
-class OrderPageScooter:
-
-    def __init__(self, driver):
-        self.name = None
-        self.driver = driver
+class OrderPageScooter(BasePage):
 
     def click_proceed_button(self):
         self.driver.find_element(*OrderPageLocators.proceed_button).click()
@@ -77,3 +74,7 @@ class OrderPageScooter:
         self.click_make_order_button()
         self.click_confirm_button()
 
+    def get_order_number(self, locator):
+        self.wait_for_element(locator)
+        order_num = self.driver.find_element(*locator).text.split(':')[1].split('.')[0].replace(' ', '')
+        return order_num
